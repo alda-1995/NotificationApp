@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Guest;
+use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 class GuestService
 {
@@ -17,9 +19,17 @@ class GuestService
         return Guest::find($id);
     }
 
-    public function create(array $data): Guest
+    public function create(array $data): ?Guest
     {
-        return Guest::create($data);
+        try {
+            return Guest::create($data);
+        } catch (Exception $e) {
+            Log::error('Error al crear invitado: ' . $e->getMessage(), [
+                'data' => $data,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
+        }
     }
 
     public function update(int $id, array $data): ?Guest

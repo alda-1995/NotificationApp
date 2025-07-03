@@ -16,4 +16,8 @@ class Guest extends Model
         'email',
         'notification_preferences',
     ];
+
+    protected $casts = [
+        'notification_preferences' => 'array',
+    ];
 }
