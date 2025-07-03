@@ -23,10 +23,8 @@
             </label>
         </div>
 
-        {{-- Miembros del grupo --}}
+        {{-- Buscador de invitados --}}
         <h3 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Miembros del grupo</h3>
-
-        {{-- Buscador opcional (visual) --}}
         <div class="px-4 py-3">
             <label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
@@ -37,35 +35,38 @@
                     </div>
                     <input
                         type="text"
-                        placeholder="Buscar miembros (solo visual)"
+                        id="guestSearchInput"
+                        placeholder="Buscar miembros por nombre o teléfono"
                         class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] h-full placeholder:text-[#60768a] px-4 rounded-l-none" />
                 </div>
             </label>
         </div>
 
         {{-- Lista de invitados --}}
-        @forelse ($guests as $guest)
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between border-b border-[#f0f2f5]">
-                <div class="flex items-center gap-4">
-                    <div
-                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14"
-                        style='background-image: url("https://ui-avatars.com/api/?name={{ urlencode($guest->name) }}&background=random");'></div>
-                    <div class="flex flex-col justify-center">
-                        <p class="text-[#111518] text-base font-medium leading-normal">{{ $guest->name }}</p>
-                        <p class="text-[#60768a] text-sm font-normal leading-normal">{{ $guest->phone_number }}</p>
+        <div id="guestList">
+            @forelse ($guests as $guest)
+                <div class="guest-item flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between border-b border-[#f0f2f5]" data-name="{{ strtolower($guest->name) }}" data-phone="{{ $guest->phone_number }}">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14"
+                            style='background-image: url("https://ui-avatars.com/api/?name={{ urlencode($guest->name) }}&background=random");'></div>
+                        <div class="flex flex-col justify-center">
+                            <p class="text-[#111518] text-base font-medium leading-normal">{{ $guest->name }}</p>
+                            <p class="text-[#60768a] text-sm font-normal leading-normal">{{ $guest->phone_number }}</p>
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        <input
+                            type="checkbox"
+                            name="guest_ids[]"
+                            value="{{ $guest->guest_id }}"
+                            class="h-5 w-5 rounded border-[#dbe1e6] border-2 bg-transparent text-[#0b80ee] checked:bg-[#0b80ee] checked:border-[#0b80ee] focus:ring-0" />
                     </div>
                 </div>
-                <div class="shrink-0">
-                    <input
-                        type="checkbox"
-                        name="guest_ids[]"
-                        value="{{ $guest->guest_id }}"
-                        class="h-5 w-5 rounded border-[#dbe1e6] border-2 bg-transparent text-[#0b80ee] checked:bg-[#0b80ee] checked:border-[#0b80ee] focus:ring-0" />
-                </div>
-            </div>
-        @empty
-            <p class="px-4 py-4 text-[#60768a] text-sm">No hay invitados disponibles.</p>
-        @endforelse
+            @empty
+                <p class="px-4 py-4 text-[#60768a] text-sm">No hay invitados disponibles.</p>
+            @endforelse
+        </div>
 
         {{-- Botones --}}
         <div class="flex gap-4 mt-8 px-4">
@@ -80,4 +81,23 @@
         </div>
     </form>
 </div>
+
+{{-- Script para filtrar invitados --}}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('guestSearchInput');
+        const guestItems = document.querySelectorAll('.guest-item');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+
+            guestItems.forEach(item => {
+                const name = item.dataset.name;
+                const phone = item.dataset.phone;
+                const match = name.includes(query) || phone.includes(query);
+                item.style.display = match ? 'flex' : 'none';
+            });
+        });
+    });
+</script>
 @endsection
