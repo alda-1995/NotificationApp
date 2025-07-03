@@ -10,6 +10,27 @@
                         <p class="text-[#111418] text-sm font-medium leading-normal">Panel</p>
                     </a>
                 </div>
+                <div class="flex flex-col gap-2">
+                    {{-- Usuario --}}
+                    <a href="{{ route('guests.index') }}" class="flex items-center gap-3 px-3 py-2">
+                        <x-icons.people />
+                        <p class="text-[#111418] text-sm font-medium leading-normal">Usuarios</p>
+                    </a>
+                </div>
+                <div class="flex flex-col gap-2">
+                    {{-- Plantillas --}}
+                    <a href="{{ route('templates.index') }}" class="flex items-center gap-3 px-3 py-2">
+                        <x-icons.paper />
+                        <p class="text-[#111418] text-sm font-medium leading-normal">Plantillas</p>
+                    </a>
+                </div>
+                <div class="flex flex-col gap-2">
+                    {{-- Notificaciones --}}
+                    <a href="{{ route('notifications.index') }}" class="flex items-center gap-3 px-3 py-2">
+                        <x-icons.notification />
+                        <p class="text-[#111418] text-sm font-medium leading-normal">Notificaciones</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
