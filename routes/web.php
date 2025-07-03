@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\GroupController;
 use App\Http\Controllers\V1\GuestController;
 use App\Http\Controllers\V1\NotificationController;
 use App\Http\Controllers\V1\PlantillaController;
@@ -34,4 +35,10 @@ Route::prefix('templates')->name('templates.')->group(function () {
 Route::prefix('notifications')->name('notifications.')->group(function () {
     Route::get('/', [NotificationController::class, 'index'])->name('index');
     Route::get('/create', [NotificationController::class, 'create'])->name('create');
+});
+
+Route::prefix('groups')->name('groups.')->group(function () {
+    Route::get('/', [GroupController::class, 'index'])->name('index');
+    Route::get('/create', [GroupController::class, 'create'])->name('create');
+    Route::post('/', [GroupController::class, 'store'])->name('store');
 });

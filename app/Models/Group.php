@@ -13,4 +13,9 @@ class Group extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function guests()
+    {
+        return $this->belongsToMany(Guest::class, 'group_guest', 'group_id', 'guest_id');
+    }
 }

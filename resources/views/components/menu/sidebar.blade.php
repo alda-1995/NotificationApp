@@ -18,6 +18,13 @@
                     </a>
                 </div>
                 <div class="flex flex-col gap-2">
+                    {{-- Grupos --}}
+                    <a href="{{ route('groups.index') }}" class="flex items-center gap-3 px-3 py-2">
+                        <x-icons.groups />
+                        <p class="text-[#111418] text-sm font-medium leading-normal">Grupos</p>
+                    </a>
+                </div>
+                <div class="flex flex-col gap-2">
                     {{-- Plantillas --}}
                     <a href="{{ route('templates.index') }}" class="flex items-center gap-3 px-3 py-2">
                         <x-icons.paper />

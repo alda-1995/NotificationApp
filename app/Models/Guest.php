@@ -20,4 +20,9 @@ class Guest extends Model
     protected $casts = [
         'notification_preferences' => 'array',
     ];
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_guest', 'guest_id', 'group_id');
+    }
 }

@@ -16,7 +16,7 @@
                         <th class="table-47e619e0-249d-40a2-abcd-9f2cc302b616-column-120 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Nombre</th>
                         <th class="table-47e619e0-249d-40a2-abcd-9f2cc302b616-column-240 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Tipo</th>
                         <th class="table-47e619e0-249d-40a2-abcd-9f2cc302b616-column-360 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Canal</th>
-                        <th class="table-47e619e0-249d-40a2-abcd-9f2cc302b616-column-480 px-4 py-3 text-left text-[#121416] w-60 text-[#6a7681] text-sm font-medium leading-normal">
+                        <th class="table-47e619e0-249d-40a2-abcd-9f2cc302b616-column-480 px-4 py-3 text-left text-[#121416] w-60 text-sm font-medium leading-normal">
                             Acciones
                         </th>
                     </tr>
