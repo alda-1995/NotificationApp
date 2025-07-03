@@ -2,10 +2,10 @@
 @section('content')
 <div class="flex flex-col max-w-[960px]">
     <div class="flex flex-wrap justify-between gap-3 p-4">
-        <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">Usuarios</p>
+        <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">Invitados</p>
         <a href="{{ route('guests.create') }}"
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal">
-            <span class="truncate">Añadir usuario</span>
+            <span class="truncate">Añadir invitado</span>
         </a>
     </div>
     <div class="px-4 py-3">
@@ -22,7 +22,7 @@
                     </svg>
                 </div>
                 <input
-                    placeholder="Buscar usuarios"
+                    placeholder="Buscar invitados"
                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121416] focus:outline-0 focus:ring-0 border-none bg-[#f1f2f4] focus:border-none h-full placeholder:text-[#6a7681] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
                     value="" />
             </div>
@@ -33,99 +33,43 @@
             <table class="flex-1">
                 <thead>
                     <tr class="bg-white">
-                        <th class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-120 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Nombre</th>
-                        <th class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-240 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Email</th>
-                        <th class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-360 px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">
-                            Teléfono
-                        </th>
-                        <th class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-480 px-4 py-3 text-left text-[#121416] w-60 text-sm font-medium leading-normal">Estado</th>
-                        <th class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-600 px-4 py-3 text-left text-[#121416] w-60 text-[#6a7681] text-sm font-medium leading-normal">
-                            Acciones
-                        </th>
+                        <th class="px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Nombre</th>
+                        <th class="px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Correo</th>
+                        <th class="px-4 py-3 text-left text-[#121416] w-[400px] text-sm font-medium leading-normal">Teléfono</th>
+                        <th class="px-4 py-3 text-left text-[#121416] w-60 text-sm font-medium leading-normal">Preferencias</th> <!-- Nueva columna -->
+                        <th class="px-4 py-3 text-left text-[#121416] w-60 text-sm font-medium leading-normal">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse ($guests as $guest)
                     <tr class="border-t border-t-[#dde1e3]">
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-120 h-[72px] px-4 py-2 w-[400px] text-[#121416] text-sm font-normal leading-normal">
-                            Sofía Rodríguez
+                        <td class="h-[72px] px-4 py-2 w-[400px] text-[#121416] text-sm font-normal leading-normal">
+                            {{ $guest->name }}
                         </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            sofia.rodriguez@example.com
+                        <td class="h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
+                            {{ $guest->email }}
                         </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            +34 666 777 888
+                        <td class="h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
+                            {{ $guest->phone_number }}
                         </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                            <button
-                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal w-full">
-                                <span class="truncate">Activo</span>
-                            </button>
+                        <td class="h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-normal leading-normal">
+                            @if (!empty($guest->notification_preferences) && is_array($guest->notification_preferences))
+                            {{ implode(', ', $guest->notification_preferences) }}
+                            @else
+                            No definidas
+                            @endif
                         </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-600 h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
-                            Ver detalles
+                        <td class="h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <a href="#" class="hover:underline">Ver detalles</a>
                         </td>
                     </tr>
-                    <tr class="border-t border-t-[#dde1e3]">
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-120 h-[72px] px-4 py-2 w-[400px] text-[#121416] text-sm font-normal leading-normal">
-                            Carlos Pérez
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            carlos.perez@example.com
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            +34 655 444 333
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                            <button
-                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal w-full">
-                                <span class="truncate">Inactivo</span>
-                            </button>
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-600 h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
-                            Ver detalles
-                        </td>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-[#6a7681]">No hay invitados registrados.</td>
                     </tr>
-                    <tr class="border-t border-t-[#dde1e3]">
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-120 h-[72px] px-4 py-2 w-[400px] text-[#121416] text-sm font-normal leading-normal">
-                            Ana García
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            ana.garcia@example.com
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            +34 644 333 222
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                            <button
-                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal w-full">
-                                <span class="truncate">Activo</span>
-                            </button>
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-600 h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
-                            Ver detalles
-                        </td>
-                    </tr>
-                    <tr class="border-t border-t-[#dde1e3]">
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-120 h-[72px] px-4 py-2 w-[400px] text-[#121416] text-sm font-normal leading-normal">
-                            Javier López
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            javier.lopez@example.com
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
-                            +34 633 222 111
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                            <button
-                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal w-full">
-                                <span class="truncate">Activo</span>
-                            </button>
-                        </td>
-                        <td class="table-fc1ab25d-e096-43e9-8bcf-0273b9e5ae73-column-600 h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
-                            Ver detalles
-                        </td>
-                    </tr>           
+                    @endforelse
                 </tbody>
+
             </table>
         </div>
     </div>

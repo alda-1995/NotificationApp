@@ -11,10 +11,10 @@
                     </a>
                 </div>
                 <div class="flex flex-col gap-2">
-                    {{-- Usuario --}}
+                    {{-- Invitado --}}
                     <a href="{{ route('guests.index') }}" class="flex items-center gap-3 px-3 py-2">
                         <x-icons.people />
-                        <p class="text-[#111418] text-sm font-medium leading-normal">Usuarios</p>
+                        <p class="text-[#111418] text-sm font-medium leading-normal">Invitados</p>
                     </a>
                 </div>
                 <div class="flex flex-col gap-2">
