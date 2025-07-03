@@ -11,7 +11,7 @@ class GroupService
 {
     public function getAll(): Collection
     {
-        return Group::all();
+        return Group::withCount('guests')->latest()->get();
     }
 
     public function find(int $id): ?Group
