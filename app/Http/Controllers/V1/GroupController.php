@@ -38,8 +38,24 @@ class GroupController extends Controller
             'guest_ids.*' => 'exists:guests,guest_id',
         ]);
 
-        $group = $this->groupService->create($validated);
+        $this->groupService->create($validated);
 
         return redirect()->route('groups.index')->with('success', 'Grupo creado correctamente');
+    }
+
+    public function show($id)
+    {
+        $group = $this->groupService->find($id);
+        $members = $this->groupService->getRecipientsFromGroup($id);
+        return view('groups.show', compact('group', 'members'));
+    }
+
+    public function destroy($id)
+    {
+        $deleted = $this->groupService->delete($id);
+        if ($deleted) {
+            return redirect()->route('groups.index')->with('success', 'Grupo eliminado correctamente.');
+        }
+        return redirect()->route('groups.index')->with('error', 'No se pudo eliminar el grupo.');
     }
 }

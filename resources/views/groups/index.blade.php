@@ -16,7 +16,7 @@
                 <thead>
                     <tr class="bg-white text-left text-sm font-medium text-[#111518]">
                         <th class="px-4 py-3 w-[300px]">Nombre</th>
-                        <th class="px-4 py-3 w-[300px]">Descripción</th>
+                        <!-- <th class="px-4 py-3 w-[300px]">Descripción</th> -->
                         <th class="px-4 py-3 w-[200px]">Miembros</th>
                         <th class="px-4 py-3 w-[200px]">Creado</th>
                         <th class="px-4 py-3 w-[150px] text-[#60768a]">Acciones</th>
@@ -26,11 +26,11 @@
                     @forelse ($groups as $group)
                         <tr class="border-t border-[#dbe1e6] text-sm">
                             <td class="px-4 py-3 text-[#111518]">{{ $group->name }}</td>
-                            <td class="px-4 py-3 text-[#60768a]">—</td> {{-- si agregas description, cámbialo --}}
+                            <!-- <td class="px-4 py-3 text-[#60768a]">—</td> -->
                             <td class="px-4 py-3 text-[#60768a]">{{ $group->guests_count }}</td>
                             <td class="px-4 py-3 text-[#60768a]">{{ $group->created_at->format('Y-m-d') }}</td>
                             <td class="px-4 py-3 text-[#0c7ff2] font-bold">
-                                <a href="#">Ver</a>
+                                <a href="{{ route('groups.show', $group->group_id) }}">Ver</a>
                             </td>
                         </tr>
                     @empty

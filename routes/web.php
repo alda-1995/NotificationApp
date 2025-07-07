@@ -41,5 +41,7 @@ Route::prefix('notifications')->name('notifications.')->group(function () {
 Route::prefix('groups')->name('groups.')->group(function () {
     Route::get('/', [GroupController::class, 'index'])->name('index');
     Route::get('/create', [GroupController::class, 'create'])->name('create');
+    Route::get('/{id}', [GroupController::class, 'show'])->name('show');
     Route::post('/', [GroupController::class, 'store'])->name('store');
+    Route::delete('/{id}', [GroupController::class, 'destroy'])->name('destroy');
 });
