@@ -50,6 +50,37 @@ class GroupController extends Controller
         return view('groups.show', compact('group', 'members'));
     }
 
+    public function edit($id)
+    {
+        $group = $this->groupService->find($id);
+        $guests = $this->guestService->getAll();
+        $selectedGuestIds = $group->guests->pluck('guest_id')->toArray();
+
+        return view('groups.edit', compact('group', 'guests', 'selectedGuestIds'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'guest_ids' => 'nullable|array',
+            'guest_ids.*' => 'exists:guests,guest_id',
+        ]);
+        
+        $updatedGroup = $this->groupService->update($id, $validated);
+
+        if ($updatedGroup) {
+            return redirect()
+                ->route('groups.index')
+                ->with('success', 'Grupo actualizado correctamente.');
+        }
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('general', 'Ocurrió un error al actualizar el grupo.');
+    }
+
     public function destroy($id)
     {
         $deleted = $this->groupService->delete($id);

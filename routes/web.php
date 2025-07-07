@@ -42,6 +42,8 @@ Route::prefix('groups')->name('groups.')->group(function () {
     Route::get('/', [GroupController::class, 'index'])->name('index');
     Route::get('/create', [GroupController::class, 'create'])->name('create');
     Route::get('/{id}', [GroupController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [GroupController::class, 'edit'])->name('edit');
     Route::post('/', [GroupController::class, 'store'])->name('store');
+    Route::put('/{id}', [GroupController::class, 'update'])->name('update');
     Route::delete('/{id}', [GroupController::class, 'destroy'])->name('destroy');
 });

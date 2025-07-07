@@ -50,12 +50,26 @@ class GroupService
 
     public function update(int $id, array $data): ?Group
     {
-        $group = Group::find($id);
-        if ($group) {
+        try {
+            $group = Group::find($id);
+            if (!$group) {
+                return null;
+            }
+            $guests = $data['guest_ids'] ?? [];
+            unset($data['guest_ids']); // Para evitar error en fillable
             $group->update($data);
-        }
+            // Sincronizar invitados (agrega los nuevos y elimina los que ya no están)
+            $group->guests()->sync($guests);
 
-        return $group;
+            return $group;
+        } catch (Exception $e) {
+            Log::error('Error al actualizar el grupo: ' . $e->getMessage(), [
+                'id' => $id,
+                'data' => $data,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
+        }
     }
 
     public function delete(int $id): bool

@@ -60,10 +60,10 @@
     </div>
     <div class="flex justify-stretch">
         <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
-            <button
+            <a href="{{ route('groups.edit', $group->group_id) }}"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Editar Grupo</span>
-            </button>
+            </a>
             <button
                 class="open-modal-btn flex min-w-[84px] max-w-[480px] items-center justify-center rounded-full h-10 px-4 bg-[#dce8f3] text-[#121416] text-sm font-bold"
                 data-modal="confirm-delete">
