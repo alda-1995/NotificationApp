@@ -19,6 +19,12 @@ class GroupService
         return Group::find($id);
     }
 
+    public function getRecipientsFromGroup(int $groupId)
+    {
+        $group = Group::with('guests')->findOrFail($groupId);
+        return $group->guests;
+    }
+
     public function create(array $data): ?Group
     {
         try {

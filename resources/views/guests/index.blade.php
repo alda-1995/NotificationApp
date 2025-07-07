@@ -60,7 +60,7 @@
                             @endif
                         </td>
                         <td class="h-[72px] px-4 py-2 w-60 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
-                            <a href="#" class="hover:underline">Ver detalles</a>
+                            <a href="#" class="hover:underline">Ver detalle</a>
                         </td>
                     </tr>
                     @empty

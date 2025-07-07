@@ -21,10 +21,10 @@ return new class extends Migration
             $table->timestamp('send_at')->nullable();
             $table->timestamps();
 
-            $table->integer('template_id')->nullable();
+            $table->integer('template_id')->unsigned()->nullable();
             $table->foreign('template_id')->references('template_id')->on('templates')->onDelete('set null');
 
-            $table->integer('group_id')->nullable();
+            $table->integer('group_id')->unsigned()->nullable();
             $table->foreign('group_id')->references('group_id')->on('groups')->onDelete('set null');
         });
     }

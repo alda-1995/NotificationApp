@@ -35,6 +35,7 @@ Route::prefix('templates')->name('templates.')->group(function () {
 Route::prefix('notifications')->name('notifications.')->group(function () {
     Route::get('/', [NotificationController::class, 'index'])->name('index');
     Route::get('/create', [NotificationController::class, 'create'])->name('create');
+    Route::post('/', [NotificationController::class, 'store'])->name('store');
 });
 
 Route::prefix('groups')->name('groups.')->group(function () {
