@@ -46,7 +46,7 @@
     </div>
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 z-50 bg-gray-300 w-full">
+    <nav class="fixed top-0 left-0 z-50 bg-gray-300 w-full lg:hidden">
         <div class="container">
             <div class="flex justify-between items-center h-[80px]">
                 <a href="/" class="text-[#111418] text-base font-medium">
