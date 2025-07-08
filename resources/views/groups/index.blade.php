@@ -29,8 +29,8 @@
                             <!-- <td class="px-4 py-3 text-[#60768a]">—</td> -->
                             <td class="px-4 py-3 text-[#60768a]">{{ $group->guests_count }}</td>
                             <td class="px-4 py-3 text-[#60768a]">{{ $group->created_at->format('Y-m-d') }}</td>
-                            <td class="px-4 py-3 text-[#0c7ff2] font-bold">
-                                <a href="{{ route('groups.show', $group->group_id) }}">Ver</a>
+                            <td class="px-4 py-3 text-[#6a7681] text-sm font-bold leading-normal tracking-[0.015em]">
+                                <a href="{{ route('groups.show', $group->group_id) }}" class="hover:underline">Ver detalle</a>
                             </td>
                         </tr>
                     @empty

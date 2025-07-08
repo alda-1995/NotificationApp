@@ -34,12 +34,20 @@ class GuestService
 
     public function update(int $id, array $data): ?Guest
     {
-        $guest = Guest::find($id);
-        if ($guest) {
-            $guest->update($data);
+        try {
+            $guest = Guest::find($id);
+            if ($guest) {
+                $guest->update($data);
+            }
+            return $guest;
+        } catch (Exception $e) {
+            Log::error('Error al actualizar invitado: ' . $e->getMessage(), [
+                'id' => $id,
+                'data' => $data,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
         }
-
-        return $guest;
     }
 
     public function delete(int $id): bool

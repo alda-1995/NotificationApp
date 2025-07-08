@@ -23,9 +23,9 @@ Route::prefix('guests')->name('guests.')->group(function () {
     Route::get('/', [GuestController::class, 'index'])->name('index');
     Route::get('/create', [GuestController::class, 'create'])->name('create');
     Route::post('/', [GuestController::class, 'store'])->name('store');
-    // Route::get('/{guest}/edit', [GuestController::class, 'edit'])->name('edit');
-    // Route::put('/{guest}', [GuestController::class, 'update'])->name('update');
-    // Route::delete('/{guest}', [GuestController::class, 'destroy'])->name('destroy');
+    Route::get('/{id}', [GuestController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [GuestController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [GuestController::class, 'update'])->name('update');
 });
 
 Route::prefix('templates')->name('templates.')->group(function () {
