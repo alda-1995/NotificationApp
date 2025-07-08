@@ -14,11 +14,12 @@
 
 <body class="bg-white text-[#111418]" style="font-family: Inter, 'Noto Sans', sans-serif;">
     @include('components.menu.sidebar')
-    <div class="min-h-screen pl-[240px]">
-        <div class="pt-6 pb-24 px-8 px-md-16">
+    <div class="min-h-screen main-wrap">
+        <div class="pt-6 pb-24 container">
             @yield('content')
         </div>
     </div>
+    <script src="https://unpkg.com/alpinejs" defer></script>
 </body>
 
 </html>

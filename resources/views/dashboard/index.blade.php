@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-  <div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="layout-content-container flex flex-col max-w-[960px]">
+  <div class="flex flex-wrap justify-between gap-3 py-4">
     <div class="flex min-w-72 flex-col gap-3">
       <p class="text-[#111418] tracking-light text-[32px] font-bold leading-tight">Dashboard</p>
       <p class="text-[#60758a] text-sm font-normal leading-normal">Overview of key metrics and usage data</p>
     </div>
   </div>
-  <div class="flex flex-wrap gap-4 p-4">
+  <div class="flex flex-wrap gap-4 py-4">
     <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#dbe0e6]">
       <p class="text-[#111418] text-base font-medium leading-normal">Total Users</p>
       <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight">1,250</p>
@@ -21,8 +21,8 @@
       <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight">3,420</p>
     </div>
   </div>
-  <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Notification Channels Usage</h2>
-  <div class="flex flex-wrap gap-4 px-4 py-6">
+  <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Notification Channels Usage</h2>
+  <div class="flex flex-wrap gap-4 py-6">
     <div class="flex min-w-72 flex-1 flex-col gap-2 rounded-lg border border-[#dbe0e6] p-6">
       <p class="text-[#111418] text-base font-medium leading-normal">Channel Usage</p>
       <div class="grid min-h-[180px] gap-x-4 gap-y-6 grid-cols-[auto_1fr] items-center py-3">
@@ -41,8 +41,8 @@
       </div>
     </div>
   </div>
-  <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">User Engagement</h2>
-  <div class="flex flex-wrap gap-4 px-4 py-6">
+  <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">User Engagement</h2>
+  <div class="flex flex-wrap gap-4 py-6">
     <div class="flex min-w-72 flex-1 flex-col gap-2 rounded-lg border border-[#dbe0e6] p-6">
       <p class="text-[#111418] text-base font-medium leading-normal">User Activity Over Time</p>
       <div class="flex min-h-[180px] flex-1 flex-col gap-8 py-4">
