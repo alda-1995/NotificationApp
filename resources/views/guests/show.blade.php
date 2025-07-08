@@ -1,7 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Modal de confirmación -->
+<x-modals.confirm-modal
+    id="confirm-delete"
+    title="¿Eliminar invitado?"
+    :message="'¿Estás seguro de que deseas eliminar el invitado <strong>' . $guest->name . '</strong>? Esta acción no se puede deshacer.'"
+    :action="route('guests.destroy', $guest->guest_id)"
+    confirm-text="Eliminar"
+/>
 <div class="flex flex-col max-w-[960px]">
+    <div class="flex flex-wrap gap-2 p-4">
+        <a class="text-[#6a7681] text-base font-medium leading-normal" href="{{ route('guests.index') }}">Invitados</a>
+        <span class="text-[#6a7681] text-base font-medium leading-normal">/</span>
+        <span class="text-[#121416] text-base font-medium leading-normal">{{ $guest->name }}</span>
+    </div>
+
     <div class="flex flex-wrap justify-between gap-3 p-4">
         <div class="flex min-w-72 flex-col gap-3">
             <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight">Detalles del invitado</p>
@@ -62,11 +76,11 @@
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Editar Invitado</span>
             </a>
-            <!-- <button
-                class="open-modal-btn flex min-w-[84px] max-w-[480px] items-center justify-center rounded-full h-10 px-4 bg-[#dce8f3] text-[#121416] text-sm font-bold"
+            <button
+                class="cursor-pointer open-modal-btn flex min-w-[84px] max-w-[480px] items-center justify-center rounded-full h-10 px-4 bg-[#dce8f3] text-[#121416] text-sm font-bold"
                 data-modal="confirm-delete">
-                Eliminar Grupo
-            </button> -->
+                Eliminar Invitado
+            </button>
         </div>
     </div>
 </div>

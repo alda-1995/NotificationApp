@@ -26,6 +26,7 @@ Route::prefix('guests')->name('guests.')->group(function () {
     Route::get('/{id}', [GuestController::class, 'show'])->name('show');
     Route::get('/{id}/edit', [GuestController::class, 'edit'])->name('edit');
     Route::put('/{id}', [GuestController::class, 'update'])->name('update');
+    Route::delete('/{id}', [GuestController::class, 'destroy'])->name('destroy');
 });
 
 Route::prefix('templates')->name('templates.')->group(function () {

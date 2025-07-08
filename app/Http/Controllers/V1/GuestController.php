@@ -85,4 +85,13 @@ class GuestController extends Controller
 
         return redirect()->route('guests.index')->with('success', 'Invitado actualizado correctamente.');
     }
+
+    public function destroy($id)
+    {
+        $deleted = $this->guestService->delete($id);
+        if ($deleted) {
+            return redirect()->route('guests.index')->with('success', 'Invitado eliminado correctamente.');
+        }
+        return redirect()->route('guests.index')->with('error', 'No se pudo eliminar el invitado.');
+    }
 }
