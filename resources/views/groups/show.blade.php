@@ -10,19 +10,19 @@
 />
 
 <div class="flex flex-col max-w-[960px]">
-    <div class="flex flex-wrap gap-2 p-4">
+    <div class="flex flex-wrap gap-2 py-4">
         <a class="text-[#6a7681] text-base font-medium leading-normal" href="{{ route('groups.index') }}">Grupos</a>
         <span class="text-[#6a7681] text-base font-medium leading-normal">/</span>
         <span class="text-[#121416] text-base font-medium leading-normal">{{ $group->name }}</span>
     </div>
-    <div class="flex flex-wrap justify-between gap-3 p-4">
+    <div class="flex flex-wrap justify-between gap-3 py-4">
         <div class="flex min-w-72 flex-col gap-3">
             <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight">{{ $group->name }}</p>
             <p class="text-[#6a7681] text-sm font-normal leading-normal">Gestiona los miembros de este grupo</p>
         </div>
     </div>
-    <h2 class="text-[#121416] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Miembros del Grupo</h2>
-    <div class="px-4 py-3 @container">
+    <h2 class="text-[#121416] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Miembros del Grupo</h2>
+    <div class="py-3">
         <div class="flex overflow-hidden rounded-xl border border-[#dde1e3] bg-white">
             <table class="flex-1">
                 <thead>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="flex justify-stretch">
-        <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
+        <div class="flex flex-1 gap-3 flex-wrap py-3 justify-end">
             <a href="{{ route('groups.edit', $group->group_id) }}"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Editar Grupo</span>

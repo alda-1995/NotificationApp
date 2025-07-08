@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <div class="flex flex-col max-w-[960px]">
-    <div class="flex flex-wrap justify-between gap-3 p-4">
+    <div class="flex flex-wrap justify-between gap-3 py-4">
         <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">Invitados</p>
         <a href="{{ route('guests.create') }}"
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal">
             <span class="truncate">Añadir invitado</span>
         </a>
     </div>
-    <div class="px-4 py-3">
+    <div class="py-3">
         <label class="flex flex-col min-w-40 h-12 w-full">
             <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
                 <div
@@ -28,7 +28,7 @@
             </div>
         </label>
     </div>
-    <div class="px-4 py-3 @container">
+    <div class="py-3">
         <div class="flex overflow-hidden rounded-xl border border-[#dde1e3] bg-white">
             <table class="flex-1">
                 <thead>

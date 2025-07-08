@@ -4,7 +4,7 @@
 <div class="flex flex-col max-w-[960px]">
     <form action="{{ route('guests.store') }}" method="POST">
         @csrf
-        <div class="flex flex-wrap justify-between gap-3 p-4">
+        <div class="flex flex-wrap justify-between gap-3 py-4">
             <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">Crear invitado</p>
         </div>
         @if ($errors->has('general'))
@@ -13,7 +13,7 @@
         </div>
         @endif
         {{-- Nombre --}}
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 py-3">
             <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#121416] text-base font-medium leading-normal pb-2">Nombre</p>
                 <input name="name"
@@ -26,7 +26,7 @@
             </label>
         </div>
         {{-- Teléfono --}}
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 py-3">
             <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#121416] text-base font-medium leading-normal pb-2">Teléfono</p>
                 <input name="phone_number"
@@ -39,7 +39,7 @@
             </label>
         </div>
         {{-- Correo --}}
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 py-3">
             <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#121416] text-base font-medium leading-normal pb-2">Correo electrónico</p>
                 <input name="email"
@@ -52,8 +52,8 @@
             </label>
         </div>
         {{-- Preferencias de notificación --}}
-        <h3 class="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Preferencias de notificación</h3>
-        <div class="px-4">
+        <h3 class="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] pb-2 pt-4">Preferencias de notificación</h3>
+        <div>
             <label class="flex gap-x-3 py-3 flex-row">
                 <input type="checkbox" name="notification[]" value="sms"
                     class="h-5 w-5 rounded border-[#dde1e3] border-2 bg-transparent focus:ring-0"
@@ -74,7 +74,7 @@
             </label>
         </div>
         {{-- Botones --}}
-        <div class="flex gap-4 mt-8 px-4">
+        <div class="flex gap-4 mt-8">
             <button type="submit"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Guardar</span>

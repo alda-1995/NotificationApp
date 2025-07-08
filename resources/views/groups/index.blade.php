@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex flex-col max-w-[960px]">
-    <div class="flex flex-wrap justify-between gap-3 p-4">
+    <div class="flex flex-wrap justify-between gap-3 py-4">
         <p class="text-[#111518] text-[32px] font-bold leading-tight">Grupos</p>
         <a href="{{ route('groups.create') }}"
             class="flex items-center justify-center h-8 px-4 rounded-full bg-[#f0f2f5] text-[#111518] text-sm font-medium">
@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <div class="px-4 py-3">
+    <div class="py-3">
         <div class="overflow-hidden rounded-xl border border-[#dbe1e6] bg-white">
             <table class="w-full">
                 <thead>

@@ -6,12 +6,12 @@
         @csrf
 
         {{-- Título --}}
-        <div class="flex flex-wrap justify-between gap-3 p-4">
+        <div class="flex flex-wrap justify-between gap-3 py-4">
             <p class="text-[#111518] tracking-light text-[32px] font-bold leading-tight min-w-72">Crear grupo</p>
         </div>
 
         {{-- Nombre del grupo --}}
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 py-3">
             <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#111518] text-base font-medium leading-normal pb-2">Nombre del grupo</p>
                 <input
@@ -24,8 +24,8 @@
         </div>
 
         {{-- Buscador de invitados --}}
-        <h3 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Miembros del grupo</h3>
-        <div class="px-4 py-3">
+        <h3 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] pb-2 pt-4">Miembros del grupo</h3>
+        <div class="py-3">
             <label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
                     <div class="text-[#60768a] flex border-none bg-[#f0f2f5] items-center justify-center pl-4 rounded-l-xl">
@@ -45,7 +45,7 @@
         {{-- Lista de invitados --}}
         <div id="guestList">
             @forelse ($guests as $guest)
-                <div class="guest-item flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between border-b border-[#f0f2f5]" data-name="{{ strtolower($guest->name) }}" data-phone="{{ $guest->phone_number }}">
+                <div class="guest-item flex items-center gap-4 bg-white min-h-[72px] py-2 justify-between border-b border-[#f0f2f5]" data-name="{{ strtolower($guest->name) }}" data-phone="{{ $guest->phone_number }}">
                     <div class="flex items-center gap-4">
                         <div
                             class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14"
@@ -69,7 +69,7 @@
         </div>
 
         {{-- Botones --}}
-        <div class="flex gap-4 mt-8 px-4">
+        <div class="flex gap-4 mt-8">
             <button type="submit"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Guardar</span>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex flex-col max-w-[960px]">
-    <div class="flex flex-wrap justify-between gap-3 p-4">
+    <div class="flex flex-wrap justify-between gap-3 py-4">
         <p class="text-[#111518] tracking-light text-[32px] font-bold leading-tight min-w-72">Notificaciones</p>
         <a href="{{ route('notifications.create') }}"
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f5] text-[#111518] text-sm font-medium leading-normal">
@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <div class="px-4 py-3">
+    <div class="py-3">
         <label class="flex flex-col min-w-40 h-12 w-full">
             <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
                 <div class="text-[#60768a] flex border-none bg-[#f0f2f5] items-center justify-center pl-4 rounded-l-xl border-r-0">
@@ -26,7 +26,7 @@
         </label>
     </div>
 
-    <div class="px-4 py-3 @container">
+    <div class="py-3">
         <div class="flex overflow-hidden rounded-xl border border-[#dbe1e6] bg-white">
             <table class="flex-1">
                 <thead>
