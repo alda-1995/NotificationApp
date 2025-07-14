@@ -72,15 +72,10 @@
 
     <div class="flex justify-stretch">
         <div class="flex flex-1 gap-3 flex-wrap py-3 justify-end">
-            <a href="{{ route('guests.edit', $guest->guest_id) }}"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]">
-                <span class="truncate">Editar Invitado</span>
-            </a>
-            <button
-                class="cursor-pointer open-modal-btn flex min-w-[84px] max-w-[480px] items-center justify-center rounded-full h-10 px-4 bg-[#dce8f3] text-[#121416] text-sm font-bold"
-                data-modal="confirm-delete">
-                Eliminar Invitado
-            </button>
+            <x-controls.button href="{{ route('guests.edit', $guest->guest_id) }}" variant="add">
+                Editar Invitado
+            </x-controls.button>
+            <x-controls.button variant="remove" data-modal="confirm-delete" class="open-modal-btn">Eliminar Invitado</x-controls.button>
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@ class GuestUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'phone_number' => ['nullable', 'string', 'max:20'],
+            'phone_number' => ['required', 'string', 'max:20'],
             'notification' => ['nullable', 'array'],
             'notification.*' => ['in:sms,whatsapp,email'],
         ];

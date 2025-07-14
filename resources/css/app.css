@@ -2,10 +2,30 @@
 @source "../views";
 
 
-.container{
+.container {
     @apply px-8 md:px-16 w-full;
 }
 
-.main-wrap{
+.main-wrap {
     @apply pt-24 lg:pt-0 lg:pl-[240px];
+}
+
+.btn {
+    @apply flex rounded-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden h-10 px-4 text-sm font-bold leading-normal tracking-[0.015em];
+}
+
+.btn-primary{
+    @apply bg-[#0c7ff2] text-white;
+}
+
+.btn-secondary{
+    @apply bg-[#f0f2f5] text-[#111418];
+}
+
+.btn-add{
+    @apply bg-[#f1f2f4] text-[#121416];
+}
+
+.btn-remove{
+    @apply bg-red-400 text-white;
 }
