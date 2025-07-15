@@ -33,3 +33,11 @@
 .selected-input {
     @apply flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 appearance-none placeholder:text-[#60758a] p-4 pr-10 text-base font-normal leading-normal;
 }
+
+.item-menu-nav{
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] text-sm font-medium hover:bg-[#e3e5e8];
+}
+
+.item-menu-nav.active{
+    @apply bg-gray-200;
+}
