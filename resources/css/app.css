@@ -14,18 +14,22 @@
     @apply flex rounded-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden h-10 px-4 text-sm font-bold leading-normal tracking-[0.015em];
 }
 
-.btn-primary{
+.btn-primary {
     @apply bg-[#0c7ff2] text-white;
 }
 
-.btn-secondary{
+.btn-secondary {
     @apply bg-[#f0f2f5] text-[#111418];
 }
 
-.btn-add{
+.btn-add {
     @apply bg-[#f1f2f4] text-[#121416];
 }
 
-.btn-remove{
+.btn-remove {
     @apply bg-red-400 text-white;
+}
+
+.selected-input {
+    @apply flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 appearance-none placeholder:text-[#60758a] p-4 pr-10 text-base font-normal leading-normal;
 }
