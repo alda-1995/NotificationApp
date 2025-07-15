@@ -10,7 +10,7 @@
     <!-- SIDEBAR -->
     <div
         :class="{ 'translate-x-0': openSidebar, '-translate-x-full': !openSidebar }"
-        class="fixed top-0 left-0 z-[999] h-screen w-[240px] border-r border-r-gray-400 bg-white transform transition-transform duration-300 ease-in-out lg:translate-x-0"
+        class="fixed top-0 left-0 z-[200] h-screen w-[240px] border-r border-r-gray-400 bg-white transform transition-transform duration-300 ease-in-out lg:translate-x-0"
     >
         <div class="flex flex-col h-full p-4 justify-between min-h-[700px]">
             <div class="flex flex-col gap-4">

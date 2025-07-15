@@ -14,6 +14,7 @@
 
 <body class="bg-white text-[#111418]" style="font-family: Inter, 'Noto Sans', sans-serif;">
     @include('components.menu.sidebar')
+    <x-modals.loader-modal />
     <div class="min-h-screen main-wrap">
         <div class="pt-6 pb-24 container">
             @yield('content')
