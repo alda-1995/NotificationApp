@@ -17,6 +17,7 @@
                 '' => 'Selecciona tipo',
                 'immediate' => 'Inmediato',
                 'scheduled' => 'Programado',
+                'recurrent' => 'Recurrente',
             ]" />
             <x-controls.select name="channel" label="Canal de envío" :options="[
                 '' => 'Selecciona canal',

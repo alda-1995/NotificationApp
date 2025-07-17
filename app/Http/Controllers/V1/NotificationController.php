@@ -42,11 +42,16 @@ class NotificationController extends Controller
 
         $message = $request->input('message');
         $channel = $request->input('channel');
-        
         $type = $request->input('type');
-
-        $notificationType = NotificationTypeFactory::make($type);
-        $notificationType->send($recipients, $message, $channel);
+        
+        try {
+            $notificationType = NotificationTypeFactory::make($type);
+            $notificationType->send($recipients, $message, $channel);
+        } catch (\InvalidArgumentException $e) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['general' => 'Ocurrió un error al enviar las notificaciones.']);
+        }
 
         return redirect()->route('notifications.index')
             ->with('success', 'Notificación enviada correctamente a todos los destinatarios.');

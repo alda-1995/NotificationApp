@@ -15,7 +15,7 @@ class StoreNotificationRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'type' => 'required|in:immediate,scheduled',
+            'type' => 'required|in:immediate,scheduled,recurrent',
             'channel' => 'required|in:sms,whatsapp',
             'message' => 'required|string',
             'send_at' => 'nullable',
