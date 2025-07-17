@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1;
 
+use App\Factories\NotificationTypeFactory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNotificationRequest;
 use App\Services\GroupService;
@@ -36,45 +37,58 @@ class NotificationController extends Controller
 
     public function store(StoreNotificationRequest $request)
     {
-        // dd($request->validated());
-        $notification = $this->notificationService->create($request->validated());
+        $group_id = $request->input('group_id');
+        $recipients = $this->groupService->getRecipientsFromGroup($group_id);
 
-        if (!$notification) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['general' => 'Ocurrió un error al guardar la notificación. Intenta nuevamente.']);
-        }
+        $message = $request->input('message');
+        $channel = $request->input('channel');
+        
+        $type = $request->input('type');
 
-        $recipients = $this->groupService->getRecipientsFromGroup($notification->group_id);
-        $failedRecipients = [];
-
-        foreach ($recipients as $guest) {
-
-            switch ($notification->channel) {
-                case 'SMS':
-                    $success = $this->twilioService->sendSms($guest->phone_number, $notification->message);
-                    if (!$success) {
-                        $failedRecipients[] = $guest->phone_number;
-                    }
-                    break;
-                case 'WhatsApp':
-                    $success = $this->twilioService->sendWhatsapp($guest->phone_number, $notification->message);
-                    if (!$success) {
-                        $failedRecipients[] = $guest->phone_number;
-                    }
-                    break;
-            }
-        }
-
-        if (!empty($failedRecipients)) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['general' => 'Notificación guardada, pero no se pudo enviar a algunos destinatarios: ' . implode(', ', $failedRecipients)]);
-            // return redirect()->route('notifications.index')
-            //     ->with('warning', 'Notificación guardada, pero no se pudo enviar a algunos destinatarios: ' . implode(', ', $failedRecipients));
-        }
+        $notificationType = NotificationTypeFactory::make($type);
+        $notificationType->send($recipients, $message, $channel);
 
         return redirect()->route('notifications.index')
             ->with('success', 'Notificación enviada correctamente a todos los destinatarios.');
+        // dd($request->validated());
+        // $notification = $this->notificationService->create($request->validated());
+
+        // if (!$notification) {
+        //     return redirect()->back()
+        //         ->withInput()
+        //         ->withErrors(['general' => 'Ocurrió un error al guardar la notificación. Intenta nuevamente.']);
+        // }
+
+        // $recipients = $this->groupService->getRecipientsFromGroup($notification->group_id);
+        // $failedRecipients = [];
+
+        // foreach ($recipients as $guest) {
+
+        //     switch ($notification->channel) {
+        //         case 'SMS':
+        //             $success = $this->twilioService->sendSms($guest->phone_number, $notification->message);
+        //             if (!$success) {
+        //                 $failedRecipients[] = $guest->phone_number;
+        //             }
+        //             break;
+        //         case 'WhatsApp':
+        //             $success = $this->twilioService->sendWhatsapp($guest->phone_number, $notification->message);
+        //             if (!$success) {
+        //                 $failedRecipients[] = $guest->phone_number;
+        //             }
+        //             break;
+        //     }
+        // }
+
+        // if (!empty($failedRecipients)) {
+        //     return redirect()->back()
+        //         ->withInput()
+        //         ->withErrors(['general' => 'Notificación guardada, pero no se pudo enviar a algunos destinatarios: ' . implode(', ', $failedRecipients)]);
+        //     // return redirect()->route('notifications.index')
+        //     //     ->with('warning', 'Notificación guardada, pero no se pudo enviar a algunos destinatarios: ' . implode(', ', $failedRecipients));
+        // }
+
+        // return redirect()->route('notifications.index')
+        //     ->with('success', 'Notificación enviada correctamente a todos los destinatarios.');
     }
 }

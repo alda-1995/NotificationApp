@@ -15,15 +15,14 @@
                 label="Nombre de la Notificación" value="{{ old('title') }}" required autofocus />
             <x-controls.select name="type" label="Tipo de notificación" :options="[
                 '' => 'Selecciona tipo',
-                'info' => 'Informativo',
-                'alerta' => 'Alerta',
-                'recordatorio' => 'Recordatorio',
+                'immediate' => 'Inmediato',
+                'scheduled' => 'Programado',
             ]" />
             <x-controls.select name="channel" label="Canal de envío" :options="[
                 '' => 'Selecciona canal',
-                'SMS' => 'SMS',
-                'WhatsApp' => 'WhatsApp',
-                'Email' => 'Email',
+                'sms' => 'SMS',
+                'whatsapp' => 'WhatsApp',
+                // 'Email' => 'Email',
             ]" required class="mt-4" />
             <x-controls.textarea name="message" label="Mensaje"
                 placeholder="Escribe el mensaje que se enviará a los usuarios." />

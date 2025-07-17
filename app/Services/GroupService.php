@@ -22,7 +22,7 @@ class GroupService
     public function getRecipientsFromGroup(int $groupId)
     {
         $group = Group::with('guests')->findOrFail($groupId);
-        return $group->guests;
+        return $group->guests->pluck('phone_number')->all();
     }
 
     public function create(array $data): ?Group

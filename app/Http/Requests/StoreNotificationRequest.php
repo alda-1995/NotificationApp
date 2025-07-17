@@ -15,8 +15,8 @@ class StoreNotificationRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'type' => 'required|in:info,alerta,recordatorio',
-            'channel' => 'required|in:SMS,WhatsApp,Email',
+            'type' => 'required|in:immediate,scheduled',
+            'channel' => 'required|in:sms,whatsapp',
             'message' => 'required|string',
             'send_at' => 'nullable',
             'group_id' => 'nullable|exists:groups,group_id',
